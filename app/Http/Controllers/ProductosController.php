@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Producto;
+use App\Models\Categoria;
+use App\Models\Archivos;
+use App\Models\Unidades;
 
 class ProductosController extends Controller
 {
@@ -13,7 +17,10 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        return view('producto.index');
+        $productos= Producto::all();
+     //   dd($productos[7]->categoria);
+
+        return view('producto.index',compact('productos'));
     }
 
     /**
@@ -23,61 +30,60 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
-        
+        $unidades= Unidades::all();
+        $categorias = Categoria::all();
+        return view('producto.create',compact('unidades','categorias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        
+        $producto =  new Producto();
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->precio = $request->precio;
+        $producto->id_categoria= $request->categoria;
+        $producto->id_unidad= $request->unidad;
+        
+        $imagen= new Archivos();
+
+        if ($request->hasFile('file')) {          
+
+            $file = $request->file('file');
+            $destinationPath = 'img/productos/';
+            $filename = time() . `-` . $file->getClientOriginalName();
+            $uploadSucces = $request->file('file')->move($destinationPath, $filename);
+            $imagen->ruta_imagen= $destinationPath . $filename;
+            $imagen->save();
+            $producto->id_archivo = $imagen->id;
+
+        }
+        $producto->save();
+        
+        $productos= Producto::all();
+        return view('producto.index',compact('productos'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         //

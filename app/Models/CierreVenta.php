@@ -19,7 +19,7 @@ class CierreVenta extends Model
     
     public function sucursal()
     {
-        return $this->belongsTo('App\Sucursal');
+        return $this->belongsTo('App\Models\Sucursal');
     }
    
 }

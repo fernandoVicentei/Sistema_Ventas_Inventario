@@ -16,6 +16,6 @@ class ControlAsistencia extends Model
     ];
     public function asistencia()
     {
-        return $this->belongsTo('App\Asistencia');
+        return $this->belongsTo('App\Models\Asistencia');
     }
 }

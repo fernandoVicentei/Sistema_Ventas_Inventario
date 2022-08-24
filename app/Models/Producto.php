@@ -18,31 +18,31 @@ class Producto extends Model
     ];
     public function archivo()
     {
-        return $this->belongsTo('App\Archivos');
+        return $this->belongsTo('App\Models\Archivos');
     }
     public function unidad()
     {
-        return $this->belongsTo('App\Unidad');
+        return $this->belongsTo('App\Models\Unidad');
     }
-    public function categoria()
+    public function categoria_pro()
     {
-        return $this->belongsTo('App\Categoria');
+        return $this->belongsTo(Categoria::class);
     }
     public function detalle_ventas()
     {
-        return $this->hasMnay('App\DetalleVenta');
+        return $this->hasMnay('App\Models\DetalleVenta');
     }
     public function historico_registro()
     {
-        return $this->belongsTo('App\HistoricoVenta');
+        return $this->belongsTo('App\Models\HistoricoVenta');
     }
     public function inventario_producto()
     {
-        return $this->belongsTo('App\InventarioProducto');
+        return $this->belongsTo('App\Models\InventarioProducto');
     }
     public function sucursal_productos()
     {
-        return $this->hasMnay('App\SucursalProducto');
+        return $this->hasMnay('App\Models\SucursalProducto');
     }
 
 }

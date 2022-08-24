@@ -16,12 +16,12 @@ class SucursalProducto extends Model
 
     public function producto()
     {
-        return $this->belongsTo('App\Producto');
+        return $this->belongsTo('App\Models\Producto');
     }
 
     public function sucursal_producto()
     {
-        return $this->belongsTo('App\Sucursal');
+        return $this->belongsTo('App\Models\Sucursal');
     }
     
 }

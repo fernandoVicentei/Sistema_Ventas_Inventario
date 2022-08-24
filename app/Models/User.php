@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function historial_venta()
     {
-        return $this->belongsTo('App\HistoricoVenta');
+        return $this->belongsTo('App\Models\HistoricoVenta');
     }
     
     

@@ -18,11 +18,11 @@ class DetalleVenta extends Model
     ];
     public function producto()
     {
-        return $this->belongsTo('App\Producto');
+        return $this->belongsTo('App\Models\Producto');
     }
     public function venta()
     {
-        return $this->belongsTo('App\Venta');
+        return $this->belongsTo('App\Models\Venta');
     }
 
 

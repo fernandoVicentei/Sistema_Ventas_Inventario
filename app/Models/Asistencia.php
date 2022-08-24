@@ -17,6 +17,6 @@ class Asistencia extends Model
     
     public function control_asistencias()
     {
-        return $this->hasMany('App\ControlAsistencia');
+        return $this->hasMany('App\Models\ControlAsistencia');
     }
 }

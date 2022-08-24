@@ -3,28 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Unidades;
 class UnidadesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
-        return view('unidad.index');
+        $unidades = Unidades::all();
+        return view('unidad.index',compact('unidades'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $nombre = $request->nombre;
+        $unidad =new  Unidades();
+        $unidad->unidad= $nombre;
+        $unidad->save();
+        $unidades = Unidades::all();
+        return response()->json(['success' => true,'unidades'=>$unidades  ], 200 );
+
     }
 
     /**

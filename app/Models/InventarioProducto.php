@@ -11,10 +11,10 @@ class InventarioProducto extends Model
 
     public function inventario()
     {
-        return $this->belongsTo('App\Inventario');
+        return $this->belongsTo('App\Models\Inventario');
     }
     public function productos()
     {
-        return $this->hasMany('App\Producto');
+        return $this->hasMany('App\Models\Producto');
     }
 }

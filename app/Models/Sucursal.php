@@ -15,10 +15,10 @@ class Sucursal extends Model
     ];
     public function cierre_ventas()
     {
-        return $this->hasMany('App\CierreVenta');
+        return $this->hasMany('App\Models\CierreVenta');
     }
     public function sucursal_productos()
     {
-        return $this->hasMany('App\SucursalProducto');
+        return $this->hasMany('App\Models\SucursalProducto');
     }
 }

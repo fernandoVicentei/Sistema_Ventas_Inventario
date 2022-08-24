@@ -16,11 +16,11 @@ class Venta extends Model
     ];
     public function cliente()
     {
-        return $this->belongsTo('App\Cliente');
+        return $this->belongsTo('App\Models\Cliente');
     }
     public function detalle_ventas()
     {
-        return $this->hasMany('App\DetalleVenta');
+        return $this->hasMany('App\Models\DetalleVenta');
     }
     
 }

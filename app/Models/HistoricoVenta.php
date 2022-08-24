@@ -16,10 +16,10 @@ class HistoricoVenta extends Model
     ];
     public function productos()
     {
-        return $this->hasMany('App\Producto');
+        return $this->hasMany('App\Models\Producto');
     }
     public function usuarios()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Models\User');
     }
 }

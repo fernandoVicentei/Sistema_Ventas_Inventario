@@ -13,6 +13,6 @@ class Inventario extends Model
     ];
     public function inventario_productos()
     {
-        return $this->hasMany('App\InventarioProducto');
+        return $this->hasMany('App\Models\InventarioProducto');
     }
 }
